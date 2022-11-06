@@ -6,7 +6,9 @@ const bodyParser = require('body-parser');
 let Parser = require('rss-parser');
 let parser = new Parser();
 app.use(bodyParser.json()); //Handles JSON requests
-app.use(bodyParser.urlencoded({ extended: false })); 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.static('public'));
+
 let links = []
 
 app.get('/rss', (req, resp) => {
@@ -42,8 +44,6 @@ app.post('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
-
-
 
 combineRss = (lnk) => {
     let vals = Object.values(lnk);
