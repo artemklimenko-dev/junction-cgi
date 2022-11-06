@@ -70,7 +70,7 @@ combineRss = (lnk) => {
 }
 
 function process(url, dither_bits) {
-    let filepath = "public/" + url.split("/").pop();
+    let filepath = "" + url.split("/").pop();
 
     if (fs.existsSync(filepath)) {
        return filepath;
