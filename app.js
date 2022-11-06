@@ -70,10 +70,10 @@ combineRss = (lnk) => {
 }
 
 function process(url, dither_bits) {
-    let filepath = "" + url.split("/").pop();
-
+    let filepath = "public" + url.split("/").pop();
+    let filename = url.split("/").pop();
     if (fs.existsSync(filepath)) {
-       return filepath;
+       return filename;
     }
 
     Jimp.read(url, (err, image) => {
@@ -129,5 +129,5 @@ function process(url, dither_bits) {
         
         image.write(filepath);
     });
-    return filepath;
+    return filename;
 }
